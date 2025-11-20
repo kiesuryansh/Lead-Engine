@@ -1,0 +1,169 @@
+# Target Configuration for Lead Generation
+# Geographies: India, US, Europe, Singapore
+# Industries: FMCG, E-commerce, Q-commerce, CPG, Retail
+
+# Target Geographies
+geographies:
+  india:
+    country_code: "in"
+    jurisdiction_codes: ["in"]
+    focus_states: ["Maharashtra", "Karnataka", "Delhi", "Tamil Nadu", "Gujarat"]
+    data_sources: ["opencorporates", "india_mca"]
+
+  us:
+    country_code: "us"
+    jurisdiction_codes: ["us_de", "us_ca", "us_ny", "us_tx", "us_fl"]
+    focus_states: ["California", "New York", "Texas", "Florida", "Illinois"]
+    data_sources: ["sec_edgar", "opencorporates", "usaspending"]
+
+  europe:
+    country_codes: ["gb", "de", "fr", "nl", "ie"]
+    jurisdiction_codes: ["gb", "de", "fr", "nl", "ie"]
+    focus_countries: ["United Kingdom", "Germany", "France", "Netherlands", "Ireland"]
+    data_sources: ["opencorporates", "companies_house"]
+
+  singapore:
+    country_code: "sg"
+    jurisdiction_codes: ["sg"]
+    data_sources: ["opencorporates", "singapore_acra"]
+
+# Target Industries
+industries:
+  fmcg:
+    name: "Fast Moving Consumer Goods"
+    keywords: ["FMCG", "consumer goods", "packaged goods", "beverages", "food products", "personal care"]
+
+    # SIC codes (US)
+    sic_codes:
+      - "2000"  # Food and Kindred Products
+      - "2080"  # Beverages
+      - "2090"  # Miscellaneous Food Preparations
+      - "2840"  # Soap, Detergents, Cleaning Preparations
+      - "2844"  # Perfumes, Cosmetics, Toiletries
+      - "5140"  # Groceries and Related Products
+
+    # NAICS codes (US/Canada)
+    naics_codes:
+      - "311"   # Food Manufacturing
+      - "3121"  # Beverage Manufacturing
+      - "3256"  # Soap, Cleaning Compound Manufacturing
+      - "3259"  # Other Chemical Product Manufacturing
+      - "4244"  # Grocery Wholesale
+
+    # UK SIC codes
+    uk_sic_codes:
+      - "10"    # Manufacture of food products
+      - "11"    # Manufacture of beverages
+      - "20.4"  # Manufacture of soap and detergents
+      - "46.3"  # Wholesale of food, beverages
+
+  ecommerce:
+    name: "E-Commerce"
+    keywords: ["ecommerce", "e-commerce", "online retail", "marketplace", "online shopping", "digital commerce"]
+
+    sic_codes:
+      - "5961"  # Catalog and Mail-Order Houses
+      - "7375"  # Information Retrieval Services
+      - "5999"  # Miscellaneous Retail Stores
+
+    naics_codes:
+      - "4541"  # Electronic Shopping
+      - "4549"  # Other Direct Selling
+      - "5112"  # Software Publishers
+
+    uk_sic_codes:
+      - "47.91" # Retail sale via mail order or internet
+      - "62.01" # Computer programming
+
+  qcommerce:
+    name: "Quick Commerce"
+    keywords: ["quick commerce", "q-commerce", "instant delivery", "grocery delivery", "fast delivery", "on-demand delivery"]
+
+    sic_codes:
+      - "5961"  # Catalog and Mail-Order Houses
+      - "5411"  # Grocery Stores
+
+    naics_codes:
+      - "4541"  # Electronic Shopping
+      - "4921"  # Couriers and Express Delivery
+      - "4451"  # Grocery Stores
+
+    uk_sic_codes:
+      - "47.91" # Internet retail
+      - "47.11" # Retail sale in non-specialised stores
+      - "53.20" # Courier activities
+
+  cpg:
+    name: "Consumer Packaged Goods"
+    keywords: ["CPG", "consumer packaged goods", "packaged foods", "household products", "personal care"]
+
+    sic_codes:
+      - "2000"  # Food and Kindred Products
+      - "2800"  # Chemicals and Allied Products
+      - "2840"  # Soap, Detergents
+      - "3080"  # Plastics Products
+
+    naics_codes:
+      - "311"   # Food Manufacturing
+      - "3121"  # Beverage Manufacturing
+      - "3256"  # Soap and Cleaning Compounds
+      - "3261"  # Plastics Product Manufacturing
+
+    uk_sic_codes:
+      - "10"    # Food products
+      - "20"    # Chemicals and chemical products
+      - "22"    # Rubber and plastics products
+
+  retail:
+    name: "Retail"
+    keywords: ["retail", "stores", "supermarket", "shopping", "department store", "chain stores"]
+
+    sic_codes:
+      - "5200"  # Building Materials, Hardware, Garden
+      - "5300"  # General Merchandise Stores
+      - "5400"  # Food Stores
+      - "5500"  # Automotive Dealers and Service Stations
+      - "5600"  # Apparel and Accessory Stores
+      - "5700"  # Home Furniture and Equipment
+      - "5900"  # Miscellaneous Retail
+
+    naics_codes:
+      - "441"   # Motor Vehicle Dealers
+      - "445"   # Food and Beverage Stores
+      - "452"   # General Merchandise Stores
+      - "454"   # Nonstore Retailers
+
+    uk_sic_codes:
+      - "47"    # Retail trade (all subsectors)
+      - "47.1"  # Retail in non-specialised stores
+      - "47.2"  # Food, beverages, tobacco
+
+# Industry Priorities
+industry_priorities:
+  - fmcg
+  - ecommerce
+  - qcommerce
+  - cpg
+  - retail
+
+# Geography Priorities
+geography_priorities:
+  - india
+  - us
+  - singapore
+  - europe
+
+# Extraction Settings
+extraction_settings:
+  min_leads_per_geography: 100
+  min_leads_per_industry: 50
+  enable_ai_enrichment: true
+  export_format: "csv"
+
+# Company Size Filters (optional)
+company_filters:
+  min_employees: null  # null = no filter
+  max_employees: null
+  min_revenue: null
+  max_revenue: null
+  founded_after: "2000-01-01"  # Only companies founded after 2000
